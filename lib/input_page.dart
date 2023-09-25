@@ -1,10 +1,10 @@
-import "dart:ffi";
-
+import "package:bmi/results_page.dart";
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "Reuseable_card.dart";
 import "IconData.dart";
 import "constant.dart";
+import "bottomButton.dart";
 
 enum Gender { male, female }
 
@@ -27,7 +27,7 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text("BMI Calculator"),
+          child: Text("BMI CALCULATOR"),
         ),
       ),
       body: Column(
@@ -217,11 +217,16 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: Color(bottomContainerColor),
-            width: double.infinity,
-            height: bottomContainerHeight,
-            margin: EdgeInsets.only(top: 10.0),
+          BottomButton(
+            text: "Calculate",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(),
+                ),
+              );
+            },
           ),
         ],
       ),
